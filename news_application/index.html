@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <h1>News Application</h1>
+        </div>
+        <div class="toggle-button" id="toggle-button">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#top-stories">Top Stories</a></li>
+                <li><a href="#sports">Sports</a></li>
+                <li><a href="#entertainment">Entertainment</a></li>
+                <li><a href="#technology">Technology</a></li>
+                <li><a href="#health">Health</a></li>
+                <li><a href="#finance">Finance</a></li>
+                <li><a href="#travel">Travel</a></li>
+                <li><a href="#food">Food</a></li>
+                <li><a href="#science">Science</a></li>
+                <li><a href="#education">Education</a></li>
+            </ul>
+        </nav>
+    </header>
+
+
+
+    <!-- Home Section -->
+    <section id="home" class="extraordinary">
+        <div class="home-banner">
+            <h2>Welcome to the Ultimate News Experience</h2>
+            <p>Stay updated with the latest news and trends from around the world.</p>
+            <button onclick="exploreMore()">Explore More</button>
+        </div>
+    </section>
+
+    <!-- Hero Section -->
+    <section id="hero">
+        <div class="hero-content">
+            <h2>Breaking News: Major Earthquake Hits City</h2>
+            <p>Emergency services are on the scene, and authorities are urging residents to stay safe.</p>
+            <a href="https://example.com/article1" target="_blank">Read more</a>
+        </div>
+    </section>
+
+    <!-- News Sections -->
+    <section id="top-stories">
+        <h2>Top Stories</h2>
+        <div class="news-grid">
+            <div class="news-item">
+                <h3>Headline News</h3>
+                <p>A major event has occurred that is dominating the news cycle today.</p>
+                <a href="https://example.com/article2" target="_blank">Read more</a>
+            </div>
+            <!-- More articles... -->
+        </div>
+    </section>
+
+    <section id="sports">
+        <h2>Sports</h2>
+        <div class="news-grid">
+            <div class="news-item">
+                <h3>Local Team Wins Championship</h3>
+                <p>The local sports team has clinched the championship title after a thrilling final match.</p>
+                <a href="https://example.com/article3" target="_blank">Read more</a>
+            </div>
+            <!-- More articles... -->
+        </div>
+    </section>
+
+    <section id="entertainment">
+        <h2>Entertainment</h2>
+        <div class="news-grid">
+            <div class="news-item">
+                <h3>Popular TV Show Returns</h3>
+                <p>Fans are excited about the return of a popular TV show for its new season.</p>
+                <a href="https://example.com/article4" target="_blank">Read more</a>
+            </div>
+            <!-- More articles... -->
+        </div>
+    </section>
+
+    <section id="technology">
+        <h2>Technology</h2>
+        <div class="news-grid">
+            <div class="news-item">
+                <h3>New Gadget Revolutionizes Industry</h3>
+                <p>A new gadget has been unveiled that promises to revolutionize the tech industry.</p>
+                <a href="https://example.com/article5" target="_blank">Read more</a>
+            </div>
+            <!-- More articles... -->
+        </div>
+    </section>
+
+    <!-- More sections for Health, Finance, Travel, Food, Science, Education... -->
+
+    <!-- Extraordinary Section -->
+    <section id="extraordinary">
+        <h2>Extraordinary Features</h2>
+        <div class="extraordinary-grid">
+            <div class="extra-item">
+                <h3>Live News Updates</h3>
+                <p>Experience live news updates with real-time notifications.</p>
+                <button onclick="showLiveUpdates()">Go Live</button>
+            </div>
+            <div class="extra-item">
+                <h3>Interactive News Map</h3>
+                <p>Explore news around the globe with our interactive map feature.</p>
+                <button onclick="openMap()">Explore Map</button>
+            </div>
+            <div class="extra-item">
+                <h3>Customizable Dashboard</h3>
+                <p>Personalize your news feed with topics that matter to you.</p>
+                <button onclick="customizeDashboard()">Customize Now</button>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2024 News Application</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
