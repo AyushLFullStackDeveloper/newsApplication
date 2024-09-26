@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World-Economy</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+
+            /* Text color */
+        }
+
+        .navbar {
+            background-color: rgba(245, 212, 80, 0.891);
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .logo img {
+            height: 60px;
+            border-radius: 50%;
+        }
+
+        .nav-items {
+            display: flex;
+            flex-grow: 1;
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .nav-items li {
+            position: relative;
+        }
+
+        .nav-items a {
+            text-decoration: none;
+            color: black;
+            /* Link color */
+            padding: 10px;
+            display: block;
+        }
+
+        .nav-items a:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Hover effect */
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            /* Dropdown background */
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .toggle-button {
+            display: none;
+            background: transparent;
+            border: none;
+            color: black;
+            /* Toggle button color */
+            font-size: 24px;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+        }
+
+        .language-selector {
+            display: flex;
+            align-items: center;
+            margin-right: 10px;
+        }
+
+        .language-logo img {
+            height: 25px;
+            /* Language logo size */
+            margin-right: 5px;
+        }
+
+        input[type="text"] {
+            padding: 5px;
+            margin-right: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .sign-in,
+        .register {
+            background-color: black;
+            /* Button background */
+            color: white;
+            /* Button text color */
+            border: none;
+            padding: 10px 15px;
+            margin-left: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .sign-in:hover,
+        .register:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            /* Hover effect for buttons */
+        }
+
+        .container {
+            display: flex;
+            /* Use flexbox for layout */
+            gap: 20px;
+            /* Space between sections */
+            margin: 20px;
+            /* Margin around the container */
+        }
+
+        .breaking-news-section {
+            margin-top: 50px;
+            flex: 1;
+            /* Each section takes equal space */
+            padding: 15px;
+            background-color: rgba(255, 255, 255, 0.95);
+            /* Slightly transparent white */
+            border-radius: 8px;
+            /* Rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            /* Shadow for depth */
+            
+            /* Scroll if content overflows */
+            max-height: auto;
+            /* Set max height */
+        }
+
+        .breaking-news-section h2 {
+            font-size: 24px;
+            /* Larger font size */
+            margin-bottom: 15px;
+            /* Space below heading */
+            color: #333;
+            /* Dark color */
+            text-align: center;
+            /* Centered heading */
+            font-family: 'Arial Black', sans-serif;
+            /* Bold font style */
+        }
+
+        .breaking-news-item {
+            display: flex;
+            /* Flexbox for alignment */
+            margin-bottom: 15px;
+            /* Spacing between items */
+            padding: 10px;
+            /* Padding for each item */
+            border-radius: 5px;
+            /* Rounded corners */
+            background-color: rgba(240, 240, 240, 0.8);
+            /* Light background */
+            transition: background-color 0.3s, transform 0.3s;
+            /* Smooth transition */
+            
+        }
+
+        .breaking-news-item:hover {
+            background-color: rgba(255, 255, 255, 0.6);
+            /* Hover effect */
+            transform: translateY(-2px);
+            /* Lift effect on hover */
+        }
+
+        .breaking-news-item img {
+            width: 170px;
+            /* Fixed width for images */
+            height: 20vh;
+            /* Maintain aspect ratio */
+            border-radius: 5px;
+            /* Rounded corners for images */
+            margin-right: 15px;
+            /* Space between image and text */
+        }
+
+        .news-content {
+            display: flex;
+            flex-direction: column;
+            /* Stack headline and description */
+        }
+
+        .news-content h3 {
+            margin: 0;
+            /* Remove default margin */
+            font-size: 18px;
+            /* Adjust headline font size */
+            color: #222;
+            /* Darker color for headlines */
+            font-weight: bold;
+            /* Bold font weight */
+        }
+
+        .news-content p {
+            margin: 5px 0 0;
+            /* Margin for description */
+            font-size: 14px;
+            /* Description font size */
+            color: #555;
+            /* Medium color for description text */
+            line-height: 1.4;
+            /* Better line height */
+        }
+
+
+        .map-section {
+            width: 65%;
+            /* Adjust width as needed */
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../../images/logo-radius.jpg" alt="Logo">
+        </div>
+        <button class="toggle-button" id="toggle-button">&#9776;</button>
+        <div class="nav-items" id="nav-items">
+            <a href="../../../index.html">Home</a>
+            <div class="dropdown">
+                <a href="#">World</a>
+                <div class="dropdown-content">
+                    <a href="#">Global Politics</a>
+                    <a href="#">International Relations</a>
+                    <a href="#">World Economy</a>
+                    <a href="#">Diplomatic News</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">Business</a>
+                <div class="dropdown-content">
+                    <a href="#">Corporate News</a>
+                    <a href="#">Startups</a>
+                    <a href="#">Economy</a>
+                    <a href="#">Markets</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">Markets</a>
+                <div class="dropdown-content">
+                    <a href="#">Stock Market</a>
+                    <a href="#">Commodities</a>
+                    <a href="#">Crypto</a>
+                    <a href="#">Bonds</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">Sustainability</a>
+                <div class="dropdown-content">
+                    <a href="#">Climate Change</a>
+                    <a href="#">Green Tech</a>
+                    <a href="#">Renewable Energy</a>
+                    <a href="#">Environmental Policies</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">Legal</a>
+                <div class="dropdown-content">
+                    <a href="#">Corporate Law</a>
+                    <a href="#">International Law</a>
+                    <a href="#">Criminal Law</a>
+                    <a href="#">Legal Trends</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">Technology</a>
+                <div class="dropdown-content">
+                    <a href="#">AI & Robotics</a>
+                    <a href="#">Software & Apps</a>
+                    <a href="#">Gadgets</a>
+                    <a href="#">Innovation</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <a href="#">More</a>
+                <div class="dropdown-content">
+                    <a href="#">Health</a>
+                    <a href="#">Science</a>
+                    <a href="#">Sports</a>
+                    <a href="#">Entertainment</a>
+                    <a href="#">Travel</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="nav-right">
+            <div class="language-selector">
+                <div class="language-logo">
+                    <img src="https://cdn-icons-png.flaticon.com/512/484/484633.png" alt="Language Logo" />
+                </div>
+                <select id="languageSelect">
+                    <option value="en">English</option>
+                    <option value="hi">हिन्दी में</option>
+                    <option value="mr">मराठी मध्ये</option>
+                </select>                
+            </div>
+
+            <input type="text" placeholder="Search">
+            <button class="sign-in">Sign In</button>
+            <button class="register">Register</button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="breaking-news-section">
+            <h2>Breaking News</h2>
+            <div class="breaking-news-item">
+                <img src="https://via.placeholder.com/150" alt="News 1">
+                <div class="news-content">
+                    <h3>Breaking News Headline 1</h3>
+                    <p>Short description of the news article goes here.</p>
+                </div>
+            </div>
+            <div class="breaking-news-item">
+                <img src="https://via.placeholder.com/150" alt="News 2">
+                <div class="news-content">
+                    <h3>Breaking News Headline 2</h3>
+                    <p>Short description of the news article goes here.</p>
+                </div>
+            </div>
+            <div class="breaking-news-item">
+                <img src="https://via.placeholder.com/150" alt="News 3">
+                <div class="news-content">
+                    <h3>Breaking News Headline 3</h3>
+                    <p>Short description of the news article goes here.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="breaking-news-section">
+            <h2>Breaking News</h2>
+            <div class="breaking-news-item">
+                <img src="https://via.placeholder.com/150" alt="News 1">
+                <div class="news-content">
+                    <h3>Breaking News Headline 1</h3>
+                    <p>Short description of the news article goes here.</p>
+                </div>
+            </div>
+            <div class="breaking-news-item">
+                <img src="https://via.placeholder.com/150" alt="News 2">
+                <div class="news-content">
+                    <h3>Breaking News Headline 2</h3>
+                    <p>Short description of the news article goes here.</p>
+                </div>
+            </div>
+            <div class="breaking-news-item">
+                <img src="https://via.placeholder.com/150" alt="News 3">
+                <div class="news-content">
+                    <h3>Breaking News Headline 3</h3>
+                    <p>Short description of the news article goes here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // Toggle menu for mobile view
+        const toggleButton = document.getElementById('toggle-button');
+        const navItems = document.getElementById('nav-items');
+
+        toggleButton.addEventListener('click', () => {
+            navItems.classList.toggle('active');
+        });
+    </script>
+
+</body>
+
+</html>
